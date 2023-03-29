@@ -19,7 +19,7 @@ struct DiaryDetailView: View {
             HStack {
                 
                 /* 홈 버튼 */
-                NavigationLink(destination: NewView()
+                NavigationLink(destination: NewView3()
                     .navigationBarBackButtonHidden(true)) {
                     Image(systemName: "house.fill")
                         .font(.title)
