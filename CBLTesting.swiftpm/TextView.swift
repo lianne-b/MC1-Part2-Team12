@@ -12,34 +12,75 @@ struct TextView: View {
     @State private var isShowing: Bool = false
     
     let diaryText: [String]
-    
+
     
     var body: some View {
-        
+       
         VStack {
+        
+            ZStack {
+                VStack {
+                    
+                    // MARK: - 노트 빨간줄 (하드코딩 ver.)
+                    // TODO: - 내용 텍스트에 top alignment & 스와이프 시 빨간줄도 내용과 같이 이동하게 수정
+                    Rectangle()
+                        .fill(Color.red)
+                        .frame(height: 4)
             
-            TabView(selection: $index) {
-                ForEach(0..<diaryText.count, id: \.self) { index in
-                    Text(diaryText[index])
-                        .tag(index)
-                        .overlay {
-                            NavigationLink(isActive: $isShowing) {
-                                Text("도착지")
-                            } label: {
-                                EmptyView()
-                            }
-                        }
+                    Spacer()
+                        .frame(height: 50)
+                
+                    Rectangle()
+                        .fill(Color.red)
+                        .frame(height: 4)
+                    
+                    Spacer()
+                        .frame(height: 50)
+                    
+                    Rectangle()
+                        .fill(Color.red)
+                        .frame(height: 4)
+                    
+                    Spacer()
+                        .frame(height: 50)
+                    
+                    Rectangle()
+                        .fill(Color.red)
+                        .frame(height: 4)
+
                 }
                 
-            }
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-            .onChange(of: index) { newValue in
-                if index == diaryText.count - 1 {
-                    isShowing.toggle()
+                
+                TabView(selection: $index) {
+                        ForEach(0..<diaryText.count, id: \.self) { index in
+                            Text(diaryText[index])
+                                .lineSpacing(30)
+                                .tag(index)
+                                .overlay {
+                                    NavigationLink(isActive: $isShowing) {
+                                        Text("도착지")
+                                    } label: {
+                                        EmptyView()
+                                    }
+                                }
+                            
+                        }
+                    
                 }
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                .onChange(of: index) { newValue in
+                    if index == diaryText.count - 1 {
+                        isShowing.toggle()
+                    }
+                }
+                
+                
+                
+                
             }
+           
             
-            
+
             
             HStack(spacing: 15) {
                 Text(index.description)
@@ -48,7 +89,7 @@ struct TextView: View {
                     if index < diaryText.count - 1 {
                         Circle()
                         // TODO: - 현재 index에 강조하는 컬러 적용
-                        //                        .fill(getIndex() == index ? Color.black : Color.white)
+    //                        .fill(getIndex() == index ? Color.black : Color.white)
                             .fill(Color.black)
                             .frame(width: 7)
                     }
@@ -56,22 +97,16 @@ struct TextView: View {
                 }
             }
         }
-//        .background(
-//            Image("background")
-//                .resizable()
-//                .aspectRatio(contentMode: .fill)
-//                .edgesIgnoringSafeArea(.all)
-//        )
+
         
     }
     
     
     
-    
-    //    func getIndex() -> Int {
-    //        let index = Int(round(Double(offset / getWidth())))
-    //        return index
-    //    }
+//    func getIndex() -> Int {
+//        let index = Int(round(Double(offset / getWidth())))
+//        return index
+//    }
 }
 
 
