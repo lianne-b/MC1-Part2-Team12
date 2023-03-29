@@ -23,17 +23,19 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            
-            // 타임라인 뷰
-            
-            
-            // 타임라인에서 각 미모지로 누르면 하단 다이어리 단일 페이지로 이동
-            /* 다이어리 단일 페이지 */
-            
-            
-            DiaryDetailView(diaryData: miya)
+
+            NavigationView {
+                DiaryDetailView(diaryData: miya)
+                    .background(
+                        Image("background")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .ignoresSafeArea(.all)
+                )
+            }.navigationBarBackButtonHidden(true)
             
         }
-        .padding(.horizontal, 20)
+//        .padding(.horizontal, 20)
+        
     }
 }

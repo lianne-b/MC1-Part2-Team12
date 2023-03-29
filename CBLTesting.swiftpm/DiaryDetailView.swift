@@ -19,13 +19,13 @@ struct DiaryDetailView: View {
             HStack {
                 
                 /* 홈 버튼 */
-                Button {
-                    // 홈으로 이동
-                } label: {
+                NavigationLink(destination: NewView()
+                    .navigationBarBackButtonHidden(true)) {
                     Image(systemName: "house.fill")
                         .font(.title)
+
                 }
-    
+                
                 Spacer()
                 
                 /* 일기 제목 */
@@ -34,7 +34,7 @@ struct DiaryDetailView: View {
                     .fontWeight(.semibold)
                 
                 Spacer()
-            }
+            }.padding(.horizontal, 20)
             
             
             // MARK: - 화면 내용
@@ -47,6 +47,7 @@ struct DiaryDetailView: View {
             /* 일기 내용 담는 뷰 */
             TextView(diaryText: diaryData.diaryText)
             
+            
         }
     }
 }
@@ -57,3 +58,6 @@ struct DiaryDetailView_Previews: PreviewProvider {
             ]))
     }
 }
+
+
+
