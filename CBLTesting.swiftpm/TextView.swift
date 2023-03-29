@@ -12,6 +12,33 @@ struct TextView: View {
     @State private var isShowing: Bool = false
     
     let diaryText: [String]
+    
+    struct AnimatedTextView: View {
+        let text: String
+        @State private var currentIndex: Int = 0
+        
+        var body: some View {
+            GeometryReader { geometry in
+                VStack(alignment: .leading) {
+                    Text(text.prefix(currentIndex))
+                        .font(.headline)
+                        .foregroundColor(.black)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .lineLimit(nil)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .onAppear {
+                            let timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+                                if currentIndex < text.count {
+                                    currentIndex += 1
+                                }
+                            }
+                            RunLoop.current.add(timer, forMode: .common)
+                        }
+                }
+                .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
+            }
+        }
+    }
 
     
     var body: some View {
@@ -52,9 +79,14 @@ struct TextView: View {
                 
                 
                 TabView(selection: $index) {
+                    
                         ForEach(0..<diaryText.count, id: \.self) { index in
-                            Text(diaryText[index])
-                                .lineSpacing(30)
+                            VStack {
+                                AnimatedTextView(text: diaryText[index])
+                                Spacer()
+                            }
+                                .lineSpacing(32)
+                                .padding(.horizontal, 10)
                                 .tag(index)
                                 .overlay {
                                     NavigationLink(isActive: $isShowing) {
@@ -67,6 +99,7 @@ struct TextView: View {
                         }
                     
                 }
+                .position(x:200, y: 270)
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                 .onChange(of: index) { newValue in
                     if index == diaryText.count - 1 {

@@ -3,16 +3,16 @@ import SwiftUI
 struct ContentView: View {
     
     let miya = DiaryData(
-        diaryImage: "sampleImage",
+        diaryImage: "cc",
         diaryText: [
-            "대해서 논의하다가 아이디어가 엎어진 게 기억에 남네. 주체적인 생활... 뭘까?ㅎ 이게 맞나? 아~ 다 모르겠고!  기획을 엎는다는 건 참 지치고 힘든 일인 것 같아.",
-            "dddddddd",
-            "aaa"
+            "춘식이 너무너무 귀여워 고구마도 좋아하고 젤리도 좋아하고 생선은 싫어해. 노란색 고양이 너무 귀여워요 춘장이들 최고야 그래도 역시 라이언이 주는 밥이 제일 좋아",
+            "두 번째 문장입니다.",
+            "세 번째 문장입니다."
         ]
     )
     
     let biny = DiaryData(
-        diaryImage: "sampleImage",
+        diaryImage: "cc",
         diaryText: [
             "a12334444555",
             "12233333ee",
