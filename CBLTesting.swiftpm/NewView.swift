@@ -9,12 +9,13 @@ import SwiftUI
 
 struct NewView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("타임라인뷰에요")
+        Text("하하하")
     }
-}
-
-struct NewView_Previews: PreviewProvider {
-    static var previews: some View {
-        NewView()
+    
+    struct NewView_Previews: PreviewProvider {
+        static var previews: some View {
+            NewView()
+        }
     }
 }

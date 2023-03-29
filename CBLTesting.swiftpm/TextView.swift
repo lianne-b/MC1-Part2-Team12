@@ -12,24 +12,24 @@ struct TextView: View {
     @State private var isShowing: Bool = false
     
     let diaryText: [String]
-
+    
     
     var body: some View {
-       
+        
         VStack {
             
             TabView(selection: $index) {
-                    ForEach(0..<diaryText.count, id: \.self) { index in
-                        Text(diaryText[index])
-                            .tag(index)
-                            .overlay {
-                                NavigationLink(isActive: $isShowing) {
-                                    Text("도착지")
-                                } label: {
-                                    EmptyView()
-                                }
+                ForEach(0..<diaryText.count, id: \.self) { index in
+                    Text(diaryText[index])
+                        .tag(index)
+                        .overlay {
+                            NavigationLink(isActive: $isShowing) {
+                                Text("도착지")
+                            } label: {
+                                EmptyView()
                             }
-                    }
+                        }
+                }
                 
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
@@ -39,7 +39,7 @@ struct TextView: View {
                 }
             }
             
-
+            
             
             HStack(spacing: 15) {
                 Text(index.description)
@@ -48,7 +48,7 @@ struct TextView: View {
                     if index < diaryText.count - 1 {
                         Circle()
                         // TODO: - 현재 index에 강조하는 컬러 적용
-    //                        .fill(getIndex() == index ? Color.black : Color.white)
+                        //                        .fill(getIndex() == index ? Color.black : Color.white)
                             .fill(Color.black)
                             .frame(width: 7)
                     }
@@ -56,16 +56,22 @@ struct TextView: View {
                 }
             }
         }
-
+//        .background(
+//            Image("background")
+//                .resizable()
+//                .aspectRatio(contentMode: .fill)
+//                .edgesIgnoringSafeArea(.all)
+//        )
         
     }
     
     
     
-//    func getIndex() -> Int {
-//        let index = Int(round(Double(offset / getWidth())))
-//        return index
-//    }
+    
+    //    func getIndex() -> Int {
+    //        let index = Int(round(Double(offset / getWidth())))
+    //        return index
+    //    }
 }
 
 
