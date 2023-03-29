@@ -1,11 +1,5 @@
 import SwiftUI
 
-struct DiaryData {
-    var diaryImage: String
-    var diaryText: [String]
-}
-
-
 struct ContentView: View {
     
     let miya = DiaryData(
@@ -16,6 +10,16 @@ struct ContentView: View {
             "aaa"
         ]
     )
+    
+    let biny = DiaryData(
+        diaryImage: "sampleImage",
+        diaryText: [
+            "a12334444555",
+            "12233333ee",
+            "bbbbbbb"
+        ]
+    )
+    
     
     var body: some View {
         VStack {
