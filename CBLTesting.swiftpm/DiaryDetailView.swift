@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import AVFAudio
 
 struct DiaryDetailView: View {
-    
+    @State var audioPlayer: AVAudioPlayer?
     let diaryData: DiaryData
     
     var body: some View {
@@ -23,7 +24,6 @@ struct DiaryDetailView: View {
                     .navigationBarBackButtonHidden(true)) {
                     Image(systemName: "house.fill")
                         .font(.title)
-
                 }
                 
                 Spacer()
@@ -49,6 +49,24 @@ struct DiaryDetailView: View {
             TextView(diaryText: diaryData.diaryText)
             
             
+        }
+        .onAppear {
+            guard let soundPath = Bundle.main.path(forResource: "파울", ofType: "mp3") else { return }
+            let url = URL(fileURLWithPath: soundPath)
+
+            do {
+                // Initialize audio player
+                audioPlayer = try AVAudioPlayer(contentsOf: url)
+
+                // Play audio
+                audioPlayer?.play()
+                print("Music started playing.")
+            } catch {
+                print("Error playing music: \(error.localizedDescription)")
+            }
+        }
+        .onDisappear {
+            audioPlayer?.stop()
         }
     }
 }

@@ -39,12 +39,12 @@ struct TextView: View {
             }
         }
     }
-
+    
     
     var body: some View {
-       
-        VStack {
         
+        VStack {
+            
             ZStack {
                 VStack {
                     
@@ -53,13 +53,6 @@ struct TextView: View {
                     Rectangle()
                         .fill(Color.red)
                         .frame(height: 4)
-            
-                    Spacer()
-                        .frame(height: 50)
-                
-                    Rectangle()
-                        .fill(Color.red)
-                        .frame(height: 4)
                     
                     Spacer()
                         .frame(height: 50)
@@ -74,32 +67,38 @@ struct TextView: View {
                     Rectangle()
                         .fill(Color.red)
                         .frame(height: 4)
-
+                    
+                    Spacer()
+                        .frame(height: 50)
+                    
+                    Rectangle()
+                        .fill(Color.red)
+                        .frame(height: 4)
                 }
                 
                 
                 TabView(selection: $index) {
                     
-                        ForEach(0..<diaryText.count, id: \.self) { index in
-                            VStack {
-                                AnimatedTextView(text: diaryText[index])
-                                Spacer()
-                            }
-                                .lineSpacing(32)
-                                .padding(.horizontal, 10)
-                                .tag(index)
-                                .overlay {
-                                    NavigationLink(isActive: $isShowing) {
-                                        Text("도착지")
-                                    } label: {
-                                        EmptyView()
-                                    }
-                                }
-                            
+                    ForEach(0..<diaryText.count, id: \.self) { index in
+                        VStack {
+                            AnimatedTextView(text: diaryText[index])
+                            Spacer()
                         }
+                        .lineSpacing(30)
+                        .padding(.horizontal, 10)
+                        .tag(index)
+//                        .overlay {
+//                            NavigationLink(isActive: $isShowing) {
+//                                Text("도착지")
+//                            } label: {
+//                                EmptyView()
+//                            }
+//                        }
+                        
+                    }
                     
                 }
-                .position(x:200, y: 270)
+                .position(x:200, y: 280)
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                 .onChange(of: index) { newValue in
                     if index == diaryText.count - 1 {
@@ -111,46 +110,46 @@ struct TextView: View {
                 
                 
             }
-           
             
-
+            
+            
             
             HStack(spacing: 15) {
-                Text(index.description)
+                //                Text(index.description)
                 ForEach(diaryText.indices, id: \.self) { index in
                     
-                    if index < diaryText.count - 1 {
+                    if index < diaryText.count  {
                         Circle()
                         // TODO: - 현재 index에 강조하는 컬러 적용
-    //                        .fill(getIndex() == index ? Color.black : Color.white)
                             .fill(Color.black)
                             .frame(width: 7)
+                        }
+                        
                     }
-                    
                 }
             }
+            
+            
         }
-
         
+        
+        
+        //    func getIndex() -> Int {
+        //        let index = Int(round(Double(offset / getWidth())))
+        //        return index
+        //    }
     }
     
     
     
-//    func getIndex() -> Int {
-//        let index = Int(round(Double(offset / getWidth())))
-//        return index
-//    }
-}
+    
+    
+    //struct TextView_Previews: PreviewProvider {
+    //    static var previews: some View {
+    //        NavigationView {
+    //            TextView()
+    //        }
+    //
+    //    }
+    //}
 
-
-
-
-
-//struct TextView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationView {
-//            TextView()
-//        }
-//
-//    }
-//}

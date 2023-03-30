@@ -7,6 +7,15 @@
 
 import Foundation
 
+enum Characters {
+    case miya
+    case toughie
+    case bruni
+    case liaane
+    case anna
+    case bini
+}
+
 struct DiaryData {
     var diaryImage: String
     var diaryText: [String]
