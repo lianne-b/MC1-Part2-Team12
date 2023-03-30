@@ -12,8 +12,7 @@
 //            VStack(){
 //                ScrollView(.horizontal, showsIndicators: false) {
 //                    HStack(alignment: .center, spacing: 150) {
-//                        ForEach(0..<6) {rs in
-//                            GeometryReader { geometry in
+//                        ForEach(0..<ㅁeader { geometry in
 //                                VStack {
 //                                    /* 비니의 일기 */
 //                                    NavigationLink(destination:  DiaryDetailView(diaryData: DiaryViewModel.shared.memberData[0])
@@ -227,50 +226,52 @@ struct ContentView: View {
     @State var audioPlayer: AVAudioPlayer?
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
-        ScrollView(.horizontal,showsIndicators: false) {
-            HStack(alignment: .center, spacing: 90) {
-                ForEach(0..<6) {index in
-                    VStack {
-                        Image(DiaryViewModel.shared.memberData[index].mimoji)
-                            .resizable().frame(width: 210, height: 350, alignment: .center).cornerRadius(16)
-                            .shadow(radius: 16)
-                        
-                        Text(DiaryViewModel.shared.memberData[index].mimojiText)
-                            .foregroundColor(.black)
-                            .font(.system(size: 20, weight: .black, design: .rounded))
-                            .padding(EdgeInsets(top:-20,leading: 0,bottom: 20,trailing: 0))
-                        Text(DiaryViewModel.shared.memberData[index].memberName)
-                            .foregroundColor(.black)
-                            .font(.system(size: 10, weight: .black, design: .rounded))
-                    }.frame(width:150,alignment: .center)
-                    
+            NavigationView{
+                ScrollView(.horizontal,showsIndicators: false) {
+                    HStack(alignment: .center, spacing: 70) {
+                        ForEach(0..<6) {index in
+                            VStack {
+                                NavigationLink(destination:  DiaryDetailView(diaryData: DiaryViewModel.shared.memberData[index])
+                                    .navigationBarBackButtonHidden(true)) {
+                                        Image(DiaryViewModel.shared.memberData[index].mimoji)
+                                            .resizable().frame(width: 210, height: 350, alignment: .center).cornerRadius(16)
+                                            .shadow(radius: 16)
+                                    }
+                                Text(DiaryViewModel.shared.memberData[index].mimojiText)
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 20, weight: .black, design: .rounded))
+                                    .padding(EdgeInsets(top:-20,leading: 0,bottom: 20,trailing: 0))
+                                Text(DiaryViewModel.shared.memberData[index].memberName)
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 10, weight: .black, design: .rounded))
+                            }.frame(width:150,alignment: .center)
+                            
+                        }
+                    }.padding(.vertical,200)
                 }
-            }.padding(.vertical,200)
-        }
-        
-        .onDisappear {
-            audioPlayer?.stop()
-            print("음악이 끊겨야됨")
-        }
-    
-        
-        
-        .onAppear {
-            guard let soundPath = Bundle.main.path(forResource: "실수", ofType: "mp3") else { return }
-            let url = URL(fileURLWithPath: soundPath)
-            
-            do {
-                // Initialize audio player
-                audioPlayer = try AVAudioPlayer(contentsOf: url)
                 
-                // Play audio
-                audioPlayer?.play()
-                print("Music started playing.")
-            } catch {
-                print("Error playing music: \(error.localizedDescription)")
+                .onDisappear {
+                    audioPlayer?.stop()
+                    print("음악이 끊겨야됨")
+                }
+                .onAppear {
+                    guard let soundPath = Bundle.main.path(forResource: "실수", ofType: "mp3") else { return }
+                    let url = URL(fileURLWithPath: soundPath)
+                    
+                    do {
+                        // Initialize audio player
+                        audioPlayer = try AVAudioPlayer(contentsOf: url)
+                        
+                        // Play audio
+                        audioPlayer?.play()
+                        print("Music started playing.")
+                    } catch {
+                        print("Error playing music: \(error.localizedDescription)")
+                    }
+                }.background(
+                    Image("background"))
+                .edgesIgnoringSafeArea(.all)
             }
-        }
-        
     }
 }
 
