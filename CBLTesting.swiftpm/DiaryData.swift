@@ -23,5 +23,7 @@ struct DiaryData {
     var diaryName: String
     var memberName: String
     var diaryImage: String
+    var diaryFont: String
+    var diaryStamp: String
     var diaryText: [String]
 }

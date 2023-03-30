@@ -60,7 +60,7 @@ struct ContentView: View {
                         /* 브루니의 일기 */
                         NavigationLink(destination:  DiaryDetailView(diaryData: DiaryViewModel.shared.memberData[5])
                             .navigationBarBackButtonHidden(true)) {
-                                Text("bruny")
+                                Text("bruni")
                                     .font(.title)
                             }
                             .padding(.horizontal, 20)
