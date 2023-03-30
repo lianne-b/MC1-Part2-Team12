@@ -10,29 +10,33 @@ import SwiftUI
 
 struct MenuView: View {
     
+    @State private var showAnimation = false
     @State var user: UserList?
+    @State private var half = false
     var body: some View {
         NavigationView{
             VStack() {
-                ScrollView(.horizontal, showsIndicators: false) {
+                ScrollView(.horizontal, showsIndicators: false){
                     HStack(alignment: .center, spacing: 230) {
                         ForEach(users) { rs in
                             GeometryReader { geometry in
                                 VStack {
-                                    
                                     NavigationLink(destination: FinalView().navigationBarBackButtonHidden(true)) {
                                         Image(rs.photo)
-                                            .resizable().frame(width: 210, height: 350, alignment: .center).cornerRadius(16)
+                                            .resizable().frame(width: 210, height: 350, alignment: .center).cornerRadius(30)
                                             .overlay(RoundedRectangle(cornerRadius: 10)
                                                 .stroke(Color.white, lineWidth: 4)
                                                 .frame(width: 210, height: 350, alignment: .center)
-                                                .cornerRadius(16)
+                                                .cornerRadius(30)
                                                 .shadow(color: Color.gray.opacity(0.2), radius: 20, x: 0, y: 0)
                                                 .opacity(0)
                                             )
+                                        
+                            
                                             .shadow(radius: 16)
-                                            .rotation3DEffect(Angle(degrees: (Double(geometry.frame(in: .global).minX) - 210) / -30), axis: (x: 0, y: 1.0, z: 0))
-                                            
+//                                            .rotation3DEffect(Angle(degrees: (Double(geometry.frame(in: .global).minX) - 210) / -30), axis: (x: 0, y: 1.0, z: 0))
+                                            .rotation3DEffect(.degrees(geometry.frame(in: .global).minX) / 8, axis: (x:0, y:0.5, z:0))
+                                     
                                     }
                                         Text(rs.detail)
                                             .foregroundColor(.black)
