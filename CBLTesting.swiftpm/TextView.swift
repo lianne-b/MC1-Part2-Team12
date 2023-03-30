@@ -24,7 +24,7 @@ struct TextView: View {
             GeometryReader { geometry in
                 VStack(alignment: .leading) {
                     Text(text.prefix(currentIndex))
-                        .font(.headline)
+                        .font(Font.custom("NanumGyuRiEuiIrGi", size: 40))
                         .foregroundColor(.black)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .lineLimit(nil)
@@ -56,28 +56,35 @@ struct TextView: View {
                     // MARK: - 노트 빨간줄 (하드코딩 ver.)
                     Rectangle()
                         .fill(Color.red)
-                        .frame(height: 4)
+                        .frame(height: 2)
                     
                     Spacer()
                         .frame(height: 50)
                     
                     Rectangle()
                         .fill(Color.red)
-                        .frame(height: 4)
+                        .frame(height: 2)
                     
                     Spacer()
                         .frame(height: 50)
                     
                     Rectangle()
                         .fill(Color.red)
-                        .frame(height: 4)
+                        .frame(height: 2)
                     
                     Spacer()
                         .frame(height: 50)
                     
                     Rectangle()
                         .fill(Color.red)
-                        .frame(height: 4)
+                        .frame(height: 2)
+                    Spacer()
+                        .frame(height: 50)
+                    
+                    Rectangle()
+                        .fill(Color.red)
+                        .frame(height: 2)
+                    
                 }
                 
                 
@@ -108,13 +115,13 @@ struct TextView: View {
                                 }
                             Spacer()
                         }
-                        .lineSpacing(30)
+                        .lineSpacing(5.5)
                         .padding(.horizontal, 10)
                         .tag(index)
                     }
                     
                 }
-                .position(x:200, y: 280)
+                .position(x:200, y: 240)
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                 
                 .onChange(of: index) { newValue in
