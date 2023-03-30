@@ -11,8 +11,6 @@ struct TextView: View {
     @State private var index: Int = 0
     @State private var isShowing: Bool = false
 
-    
-    // let diaryText: [String]
     let diaryData: DiaryData
     
     
@@ -89,8 +87,20 @@ struct TextView: View {
                                     NavigationLink(isActive: $isShowing) {
                                         
                                         // TODO: - 로직 수정 필요
-                                        DiaryDetailView(diaryData: DiaryData(id: diaryData.id, memberName: diaryData.memberName, diaryImage: diaryData.diaryImage, diaryText: diaryData.diaryText))
-                                         .navigationBarBackButtonHidden(true)
+                                        // 넘겨진 데이터는 특정 멤버의 데이터
+                                        // 데이터에 id 값이 있다
+                                        // 다음 페이지 멤버의 id 값은 무조건 +1
+                                        // 솔루션: 현재 데이터의 id에 +1 연산 후 / 연산 결과와 일치한 id를 갖고 있는 데이터로 넘어가기
+                                        
+                                        if diaryData.id < DiaryViewModel.shared.memberData.count - 1 {
+                                            DiaryDetailView(diaryData: diaryData.id < 5 ? DiaryViewModel.shared.memberData[diaryData.id + 1] :
+                                                DiaryViewModel.shared.memberData[5])
+                                            .navigationBarBackButtonHidden(true)
+                                        } else {
+                                            EndingView()
+                                        }
+                                        let _ = print(diaryData.id)
+
                                     } label: {
                                         EmptyView()
                                     }

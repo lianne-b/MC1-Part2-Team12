@@ -45,7 +45,6 @@ struct DiaryDetailView: View {
                 .frame(width: 300, height: 300)
             
             /* 일기 내용 담는 뷰 */
-//            TextView(diaryText: diaryData.diaryText, memberName: diaryData.memberName)
             TextView(diaryData: diaryData)
             
             
