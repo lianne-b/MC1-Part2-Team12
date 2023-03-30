@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - 일기 데이터를 담는 DiaryData 모델
+
 enum Characters {
     case miya
     case toughie

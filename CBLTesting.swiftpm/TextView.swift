@@ -11,8 +11,6 @@ struct TextView: View {
     @State private var index: Int = 0
     @State private var isShowing: Bool = false
 
-    
-    // let diaryText: [String]
     let diaryData: DiaryData
     
     
@@ -21,6 +19,8 @@ struct TextView: View {
         @State private var currentIndex: Int = 0
         
         var body: some View {
+            
+            // MARK: - 타이핑 되는 애니메이션
             GeometryReader { geometry in
                 VStack(alignment: .leading) {
                     Text(text.prefix(currentIndex))
@@ -40,6 +40,7 @@ struct TextView: View {
                 }
                 .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
             }
+            .padding(.horizontal, 20)
         }
     }
     
@@ -52,7 +53,6 @@ struct TextView: View {
             ZStack {
                 VStack {
                     // MARK: - 노트 빨간줄 (하드코딩 ver.)
-                    // TODO: - 내용 텍스트에 top alignment & 스와이프 시 빨간줄도 내용과 같이 이동하게 수정
                     Rectangle()
                         .fill(Color.red)
                         .frame(height: 4)
@@ -88,9 +88,19 @@ struct TextView: View {
                              .overlay {
                                     NavigationLink(isActive: $isShowing) {
                                         
-                                        // TODO: - 로직 수정 필요
-                                        DiaryDetailView(diaryData: DiaryData(id: diaryData.id, memberName: diaryData.memberName, diaryImage: diaryData.diaryImage, diaryText: diaryData.diaryText))
-                                         .navigationBarBackButtonHidden(true)
+                                        // MARK: - 다음 멤버의 페이지로 스와이핑 되는 로직 (데이터 교체)
+                                        // 현재 넘겨져 온 데이터는 특정 멤버의 데이터
+                                        // 데이터 속성 중 id 값이 memberData에서의 인덱스에 해당하고, 다음 페이지 멤버의 id 값은 무조건 +1이다
+                                        // 솔루션: (현재 데이터의 id + 1)에 해당하는 데이터로 넘어가게 한다
+                                        if diaryData.id < DiaryViewModel.shared.memberData.count - 1 {
+                                            DiaryDetailView(diaryData: diaryData.id < 5 ? DiaryViewModel.shared.memberData[diaryData.id + 1] :
+                                                DiaryViewModel.shared.memberData[5])
+                                            .navigationBarBackButtonHidden(true)
+                                        } else {
+                                            EndingView()
+                                        }
+//                                        let _ = print(diaryData.id)
+
                                     } label: {
                                         EmptyView()
                                     }
@@ -131,12 +141,6 @@ struct TextView: View {
             
         }
         
-        
-        
-        //    func getIndex() -> Int {
-        //        let index = Int(round(Double(offset / getWidth())))
-        //        return index
-        //    }
     }
     
     
