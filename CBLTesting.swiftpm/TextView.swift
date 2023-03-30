@@ -19,6 +19,7 @@ struct TextView: View {
         @State private var currentIndex: Int = 0
         
         var body: some View {
+
             //MARK: VStack으로 안 묶어도 잘 작동하는 거 같아서 우선 주석처리 해뒀어요!
 //            VStack(alignment: .leading) {
                 Text(text.prefix(currentIndex))
@@ -30,6 +31,8 @@ struct TextView: View {
                         let timer = Timer.scheduledTimer(withTimeInterval: 0.06, repeats: true) { _ in
                             if currentIndex < text.count {
                                 currentIndex += 1
+                                }
+
                             }
                         }
                         RunLoop.current.add(timer, forMode: .common)
@@ -44,28 +47,35 @@ struct TextView: View {
                 VStack {
                     Rectangle()
                         .fill(Color.red)
-                        .frame(height: 4)
+                        .frame(height: 2)
                     
                     Spacer()
                         .frame(height: 50)
                     
                     Rectangle()
                         .fill(Color.red)
-                        .frame(height: 4)
+                        .frame(height: 2)
                     
                     Spacer()
                         .frame(height: 50)
                     
                     Rectangle()
                         .fill(Color.red)
-                        .frame(height: 4)
+                        .frame(height: 2)
                     
                     Spacer()
                         .frame(height: 50)
                     
                     Rectangle()
                         .fill(Color.red)
-                        .frame(height: 4)
+                        .frame(height: 2)
+                    Spacer()
+                        .frame(height: 50)
+                    
+                    Rectangle()
+                        .fill(Color.red)
+                        .frame(height: 2)
+                    
                 }
                 
                 //MARK: 탭뷰 (탭뷰 안에서 AnimatedTextView 찍어냄)
@@ -88,6 +98,7 @@ struct TextView: View {
                                 }
                             Spacer()
                         }
+
                         .lineSpacing(30)
                         .tag(index)
                     }

@@ -24,7 +24,9 @@ final class DiaryViewModel {
                 "대해서 논의하다가 아이디어가 엎어진 게 기억에 남네. 주체적인 생활... 뭘까?ㅎ 이게 맞나? 아~ 다 모르겠고!  기획을 엎는다는 건 참 지치고 힘든 일인 것 같아.",
                 "Biny2",
                 "Biny3"
-            ]
+            ],
+            mimoji: "biny",
+            mimojiText: "HI!"
         ),
         
         DiaryData(
@@ -35,7 +37,9 @@ final class DiaryViewModel {
                 "터피1비니 다음은 나야",
                 "터피2",
                 "터피3"
-            ]
+            ],
+            mimoji: "touphie",
+            mimojiText: "HI!"
         ),
         
         DiaryData(
@@ -46,7 +50,9 @@ final class DiaryViewModel {
                 "예우닝터피 다음은 나야",
                 "키키",
                 "케케"
-            ]
+            ],
+            mimoji: "lianne",
+            mimojiText: "HI!"
         ),
         
         DiaryData(
@@ -57,7 +63,9 @@ final class DiaryViewModel {
                 "리앤 다음은 나야",
                 "크크",
                 "코코"
-            ]
+            ],
+            mimoji: "miya",
+            mimojiText: "HI!"
         ),
         
         DiaryData(
@@ -68,7 +76,9 @@ final class DiaryViewModel {
                 "미야 다음은 나야",
                 "카카",
                 "캬캬"
-            ]
+            ],
+            mimoji: "anna",
+            mimojiText: "HI!"
         ),
         
         DiaryData(
@@ -79,7 +89,9 @@ final class DiaryViewModel {
                 "마지막은 나야",
                 "ㅇㅇ",
                 "ㅇㅇ"
-            ]
+            ],
+            mimoji: "bruni",
+            mimojiText: "HI!"
         )
         
     ]
