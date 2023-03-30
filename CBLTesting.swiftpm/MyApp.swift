@@ -11,7 +11,6 @@ struct MyApp: App {
             for family in UIFont.familyNames{
                 print(family)
 
-
                 for names in UIFont.fontNames(forFamilyName: family){
                     print("== \(names)")
                 }
@@ -19,7 +18,7 @@ struct MyApp: App {
         }
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            FirstView()
         }
     }
 }

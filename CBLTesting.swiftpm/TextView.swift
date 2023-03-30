@@ -18,8 +18,7 @@ struct TextView: View {
     
     let diaryData: DiaryData
     
-    
-    //MARK: - AnimatedTextView - 타이핑 되는 애니메이션
+    // MARK: - 텍스트 애니메이션 뷰
     struct AnimatedTextView: View {
         let text: String
         let font: String
@@ -33,10 +32,9 @@ struct TextView: View {
                         .font(Font.custom(font, size: 30))
                         .foregroundColor(.black)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .lineLimit(nil)
                         .fixedSize(horizontal: false, vertical: true)
                         .onAppear {
-                            let timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+                            let timer = Timer.scheduledTimer(withTimeInterval: 0.06, repeats: true) { _ in
                                 if currentIndex < text.count {
                                     currentIndex += 1
                                 }
@@ -50,11 +48,10 @@ struct TextView: View {
         }
     }
     //문자열에서 캐릭터의 개수를 새면서 계속 반복하며 찍어내는것
+    //MARK: 빨간색 선
     
-    
-    
+
     var body: some View {
-        
         VStack {
             ZStack {
                 VStack {
@@ -92,7 +89,8 @@ struct TextView: View {
                                         } label: {
                                             EmptyView()
                                         }
-                                    }
+                                   }
+               
                             }
                             .lineSpacing(20)
                             .tag(index)
@@ -109,7 +107,6 @@ struct TextView: View {
                 
                 
                 // MARK: - 스템프 이미지
-                // TODO: 포지션 다시 잡기
                 HStack {
                     Spacer()
                     Image(diaryData.diaryStamp)
@@ -120,12 +117,11 @@ struct TextView: View {
                         .opacity(stampOpacity ? 1.0 : 0.0)
                         .padding(.trailing, 10)
                         .offset(y: 90)
+
                 }
-                
             }
             
-            
-          
+
             // MARK: - 탭뷰 하단 인디케이터
             HStack(spacing: 15) {
                 //                Text(index.description)
@@ -133,7 +129,6 @@ struct TextView: View {
                     
                     if i < diaryData.diaryText.count - 1 {
                         Circle()
-                        // TODO: - 현재 index에 강조하는 컬러 적용
                             .fill(i == index ? Color.black : Color(.systemGray2))
                             .frame(width: 10)
                     }
@@ -158,7 +153,6 @@ struct TextView: View {
                 }
                 .padding(.bottom, 20)
             }
-//            .background(.yellow)
             
         }
         
