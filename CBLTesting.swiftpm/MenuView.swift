@@ -13,6 +13,7 @@ struct MenuView: View {
     @State private var showAnimation = false
     @State var user: UserList?
     @State private var half = false
+    
     var body: some View {
         NavigationView{
             VStack() {

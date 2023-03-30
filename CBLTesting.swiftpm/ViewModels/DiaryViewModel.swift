@@ -6,10 +6,22 @@
 //
 
 import Foundation
-
+import SwiftUI
 // MARK: - 싱글톤으로 데이터 분리
 /* ex. DiaryViewModel.shared.memberData 처럼 접근 */
 
+
+/*
+ struct DiaryData {
+     var id: Int // id
+     var memberName: String // 누구인가
+     var mimoji : String // 미모지 캐릭터
+     var intro : String
+     var diaryImage: String // 다이어리 이미지
+     var diaryText: [String] // 다이어리 텍스트
+ }
+
+ */
 final class DiaryViewModel {
     static let shared = DiaryViewModel()
     private init() { }
@@ -19,8 +31,9 @@ final class DiaryViewModel {
         DiaryData(
             id: 0,
             memberName: "biny",
+            mimoji : "biny",
+            intro : "안녕하십니까~~~~~~~비니입니다~~~~~",
             diaryImage: "0",
-            
             diaryText: [
                 "대해서 논의하다가 아이디어가 엎어진 게 기억에 남네. 주체적인 생활... 뭘까?ㅎ 이게 맞나? 아~ 다 모르겠고!  기획을 엎는다는 건 참 지치고 힘든 일인 것 같아.",
                 "Biny2",
@@ -31,6 +44,8 @@ final class DiaryViewModel {
         DiaryData(
             id: 1,
             memberName: "toughie",
+            mimoji : "biny",
+            intro : "안녕하십니까~~~~~~~비니입니다~~~~~",
             diaryImage: "1",
             diaryText: [
                 "터피1비니 다음은 나야",
@@ -42,6 +57,8 @@ final class DiaryViewModel {
         DiaryData(
             id: 2,
             memberName: "lianne",
+            mimoji : "biny",
+            intro : "안녕하십니까~~~~~~~비니입니다~~~~~",
             diaryImage: "2",
             diaryText: [
                 "예우닝터피 다음은 나야",
@@ -53,6 +70,8 @@ final class DiaryViewModel {
         DiaryData(
             id: 3,
             memberName: "miya",
+            mimoji : "biny",
+            intro : "안녕하십니까~~~~~~~비니입니다~~~~~",
             diaryImage: "3",
             diaryText: [
                 "리앤 다음은 나야",
@@ -64,6 +83,8 @@ final class DiaryViewModel {
         DiaryData(
             id: 4,
             memberName: "anna",
+            mimoji : "biny",
+            intro : "안녕하십니까~~~~~~~비니입니다~~~~~",
             diaryImage: "5",
             diaryText: [
                 "미야 다음은 나야",
@@ -75,6 +96,8 @@ final class DiaryViewModel {
         DiaryData(
             id: 5,
             memberName: "bruny",
+            mimoji : "biny",
+            intro : "안녕하십니까~~~~~~~비니입니다~~~~~",
             diaryImage: "6",
             diaryText: [
                 "마지막은 나야",

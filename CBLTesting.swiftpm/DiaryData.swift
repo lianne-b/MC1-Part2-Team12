@@ -10,8 +10,10 @@ import Foundation
 // MARK: - 일기 데이터를 담는 DiaryData 모델
 
 struct DiaryData {
-    var id: Int
-    var memberName: String
-    var diaryImage: String //
-    var diaryText: [String]
+    var id: Int // id
+    var memberName: String // 누구인가
+    var mimoji : String // 미모지 캐릭터
+    var intro : String
+    var diaryImage: String // 다이어리 이미지
+    var diaryText: [String] // 다이어리 텍스트
 }
