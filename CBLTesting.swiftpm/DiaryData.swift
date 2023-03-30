@@ -9,18 +9,11 @@ import Foundation
 
 // MARK: - 일기 데이터를 담는 DiaryData 모델
 
-enum Characters {
-    case miya
-    case toughie
-    case bruni
-    case liaane
-    case anna
-    case bini
-}
-
 struct DiaryData {
-    var id: Int
-    var memberName: String
-    var diaryImage: String
-    var diaryText: [String]
+    var id: Int // 아이디
+    var memberName: String // 누구인지
+    var diaryImage: String // 다이어리 이미지
+    var diaryText: [String] // 다이어리 텍스트
+    var mimoji : String // 미모지 그림
+    var mimojiText : String // 미모지 텍스트
 }
