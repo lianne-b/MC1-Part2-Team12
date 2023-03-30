@@ -114,13 +114,14 @@ struct TextView: View {
             }
             
             HStack(spacing: 15) {
-                Text(index.description)
-                ForEach(diaryData.diaryText.indices, id: \.self) { index in
+//                Text(index.description)
+                ForEach(diaryData.diaryText.indices, id: \.self) { i in
                     
-                    if index < diaryData.diaryText.count - 1 {
+                    if i < diaryData.diaryText.count {
                         Circle()
                         // TODO: - 현재 index에 강조하는 컬러 적용
-                            .fill(Color.black)
+                            .fill(i == index ? Color.yellow : Color.gray)
+//                            .fill(Color.black)
                             .frame(width: 7)
                         }
                         
