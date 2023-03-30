@@ -34,7 +34,7 @@ struct TextView: View {
                                 }
 
                             }
-                        }
+                        
                         RunLoop.current.add(timer, forMode: .common)
                     }
             .padding(.horizontal, 20)
