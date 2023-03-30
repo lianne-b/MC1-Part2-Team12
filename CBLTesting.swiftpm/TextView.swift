@@ -8,19 +8,23 @@
 import SwiftUI
 
 struct TextView: View {
+    /* 뷰 네비게이션에 쓰이는 변수 */
     @State private var index: Int = 0
     @State private var isShowing: Bool = false
+    
+    /* 스템프 애니메이션에 쓰이는 변수 */
+    @State private var animationAmount: CGFloat = 1
+    @State private var stampOpacity = false
 
     let diaryData: DiaryData
     
-    //MARK: AnimatedTextView
+    
+    //MARK: - AnimatedTextView - 타이핑 되는 애니메이션
     struct AnimatedTextView: View {
         let text: String
         @State private var currentIndex: Int = 0
         
         var body: some View {
-            
-            // MARK: - 타이핑 되는 애니메이션
             GeometryReader { geometry in
                 VStack(alignment: .leading) {
                     Text(text.prefix(currentIndex))
@@ -50,10 +54,16 @@ struct TextView: View {
     var body: some View {
         
         VStack {
-            
             ZStack {
                 VStack {
                     // MARK: - 노트 빨간줄 (하드코딩 ver.)
+                    Rectangle()
+                        .fill(Color.red)
+                        .frame(height: 4)
+                    
+                    Spacer()
+                        .frame(height: 50)
+                    
                     Rectangle()
                         .fill(Color.red)
                         .frame(height: 4)
@@ -82,7 +92,6 @@ struct TextView: View {
                 
                 
                 TabView(selection: $index) {
-  // ["나는", "춘식이가", "좋아요."]
                     ForEach(0..<diaryData.diaryText.count, id: \.self) { index in
                         VStack {
                             AnimatedTextView(text: diaryData.diaryText[index])
@@ -100,7 +109,6 @@ struct TextView: View {
                                         } else {
                                             EndingView()
                                         }
-//                                        let _ = print(diaryData.id)
 
                                     } label: {
                                         EmptyView()
@@ -118,29 +126,64 @@ struct TextView: View {
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                 
                 .onChange(of: index) { newValue in
-//                    sleep(3)
                     if index == diaryData.diaryText.count - 1 {
-                        
-                        isShowing.toggle()
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) {
+                            isShowing.toggle()
+//                        }
                     }
+                }
+                
+                
+                // MARK: - 스템프 이미지
+                // TODO: 포지션 다시 잡기
+                HStack {
+                    Spacer()
+                    Image("stamp")
+                        .resizable()
+                        .frame(width: 180, height: 180)
+                        .scaleEffect(animationAmount, anchor: .center)
+                        .animation(Animation.spring().speed(2), value: animationAmount)
+                        .opacity(stampOpacity ? 1.0 : 0.0)
+                        .padding(.trailing, 10)
+                        .offset(y: 150)
                 }
                 
             }
             
+        
+            // MARK: - 스템프 트리거 버튼 영역 (opacity: 0 으로 처리)
+            HStack {
+                Spacer()
+                Button {
+                    self.animationAmount -= 0.1
+                    stampOpacity = true
+                } label: {
+                    Text("리액션 달기 👊")
+                        .bold()
+                        .font(.title2)
+                        .opacity(0.0)
+                        .padding(.leading, 50)
+                        .padding(.vertical, 40)
+                }
+                .padding(.bottom, 20)
+            }
+
+            
+            // MARK: - 탭뷰 하단 인디케이터
             HStack(spacing: 15) {
 //                Text(index.description)
                 ForEach(diaryData.diaryText.indices, id: \.self) { i in
                     
-                    if i < diaryData.diaryText.count {
+                    if i < diaryData.diaryText.count - 1 {
                         Circle()
                         // TODO: - 현재 index에 강조하는 컬러 적용
                             .fill(i == index ? Color.yellow : Color.gray)
-//                            .fill(Color.black)
                             .frame(width: 7)
                         }
                         
                     }
                 }
+        
             }
             
             
