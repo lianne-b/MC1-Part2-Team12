@@ -19,7 +19,7 @@ final class DiaryViewModel {
         DiaryData(
             id: 0,
             memberName: "biny",
-            diaryImage: "sampleImage",
+            diaryImage: "cc",
             diaryText: [
                 "대해서 논의하다가 아이디어가 엎어진 게 기억에 남네. 주체적인 생활... 뭘까?ㅎ 이게 맞나? 아~ 다 모르겠고!  기획을 엎는다는 건 참 지치고 힘든 일인 것 같아.",
                 "Biny2",
@@ -30,7 +30,7 @@ final class DiaryViewModel {
         DiaryData(
             id: 1,
             memberName: "toughie",
-            diaryImage: "sampleImage",
+            diaryImage: "lianneImage",
             diaryText: [
                 "터피1비니 다음은 나야",
                 "터피2",
@@ -41,7 +41,7 @@ final class DiaryViewModel {
         DiaryData(
             id: 2,
             memberName: "lianne",
-            diaryImage: "sampleImage",
+            diaryImage: "cc",
             diaryText: [
                 "예우닝터피 다음은 나야",
                 "키키",
@@ -52,7 +52,7 @@ final class DiaryViewModel {
         DiaryData(
             id: 3,
             memberName: "miya",
-            diaryImage: "sampleImage",
+            diaryImage: "lianneImage",
             diaryText: [
                 "리앤 다음은 나야",
                 "크크",
@@ -63,7 +63,7 @@ final class DiaryViewModel {
         DiaryData(
             id: 4,
             memberName: "anna",
-            diaryImage: "sampleImage",
+            diaryImage: "lianneImage",
             diaryText: [
                 "미야 다음은 나야",
                 "카카",
@@ -74,7 +74,7 @@ final class DiaryViewModel {
         DiaryData(
             id: 5,
             memberName: "bruny",
-            diaryImage: "sampleImage",
+            diaryImage: "lianneImage",
             diaryText: [
                 "마지막은 나야",
                 "ㅇㅇ",
