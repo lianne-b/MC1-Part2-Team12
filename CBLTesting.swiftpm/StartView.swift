@@ -39,7 +39,7 @@ struct StartView: View {
             .edgesIgnoringSafeArea(.all)
         }
     }
-}i
+}
 
 
 struct StartView_Previews: PreviewProvider {
