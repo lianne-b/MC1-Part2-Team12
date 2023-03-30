@@ -21,7 +21,7 @@ struct FirstView: View {
                         print("Button is Clicked")
                     },
                            label : {
-                        NavigationLink(destination: MenuView().navigationBarBackButtonHidden(true)){
+                        NavigationLink(destination: ContentView().navigationBarBackButtonHidden(true)){
                             Text("시작하기")
                                 .padding(20)
                                 .foregroundColor(.black)
