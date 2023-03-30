@@ -5,7 +5,7 @@ struct ContentView: View {
     
     @State var audioPlayer: AVAudioPlayer?
     @Environment(\.presentationMode) var presentationMode
-
+    
     // MARK: - 팀원들의 다이어리 데이터
     let memberData: [DiaryData] = [
         DiaryData(
@@ -81,7 +81,7 @@ struct ContentView: View {
         VStack {
             NavigationView {
                 ScrollView(.horizontal, showsIndicators: false) {
-                   
+                    
                     HStack {
                         /* 비니의 일기 */
                         NavigationLink(destination:  DiaryDetailView(diaryData: memberData[0])
@@ -99,7 +99,7 @@ struct ContentView: View {
                                     .font(.title)
                             }
                             .padding(.horizontal, 20)
-           
+                        
                         
                         /* 리앤의 일기 */
                         NavigationLink(destination:  DiaryDetailView(diaryData: memberData[2])
@@ -139,10 +139,14 @@ struct ContentView: View {
                     }
                     
                 }
+                .onDisappear {
+                audioPlayer?.stop()
+                print("음악이 끊겨야됨")
+                }
                 
             }
         }
-         .onAppear {
+        .onAppear {
             guard let soundPath = Bundle.main.path(forResource: "실수", ofType: "mp3") else { return }
             let url = URL(fileURLWithPath: soundPath)
             
@@ -157,10 +161,7 @@ struct ContentView: View {
                 print("Error playing music: \(error.localizedDescription)")
             }
         }
-        .onDisappear {
-            audioPlayer?.stop()
-            print("음악이 끊겨야됨")
-        }
-    
+        
+        
     }
 }
