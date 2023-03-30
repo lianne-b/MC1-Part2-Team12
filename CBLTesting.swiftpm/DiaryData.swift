@@ -17,6 +17,8 @@ enum Characters {
 }
 
 struct DiaryData {
+    var id: Int
+    var memberName: String
     var diaryImage: String
     var diaryText: [String]
 }

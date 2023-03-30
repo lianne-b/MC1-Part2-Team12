@@ -10,8 +10,11 @@ import SwiftUI
 struct TextView: View {
     @State private var index: Int = 0
     @State private var isShowing: Bool = false
+
     
-    let diaryText: [String]
+    // let diaryText: [String]
+    let diaryData: DiaryData
+    
     
     struct AnimatedTextView: View {
         let text: String
@@ -40,6 +43,7 @@ struct TextView: View {
         }
     }
     
+
     
     var body: some View {
         
@@ -47,7 +51,6 @@ struct TextView: View {
             
             ZStack {
                 VStack {
-                    
                     // MARK: - 노트 빨간줄 (하드코딩 ver.)
                     // TODO: - 내용 텍스트에 top alignment & 스와이프 시 빨간줄도 내용과 같이 이동하게 수정
                     Rectangle()
@@ -78,47 +81,43 @@ struct TextView: View {
                 
                 
                 TabView(selection: $index) {
-                    
-                    ForEach(0..<diaryText.count, id: \.self) { index in
+ 
+                    ForEach(0..<diaryData.diaryText.count, id: \.self) { index in
                         VStack {
-                            AnimatedTextView(text: diaryText[index])
+                            AnimatedTextView(text: diaryData.diaryText[index])
+                             .overlay {
+                                    NavigationLink(isActive: $isShowing) {
+                                        
+                                        // TODO: - 로직 수정 필요
+                                        DiaryDetailView(diaryData: DiaryData(id: diaryData.id, memberName: diaryData.memberName, diaryImage: diaryData.diaryImage, diaryText: diaryData.diaryText))
+                                         .navigationBarBackButtonHidden(true)
+                                    } label: {
+                                        EmptyView()
+                                    }
+                                }
                             Spacer()
                         }
                         .lineSpacing(30)
                         .padding(.horizontal, 10)
                         .tag(index)
-//                        .overlay {
-//                            NavigationLink(isActive: $isShowing) {
-//                                Text("도착지")
-//                            } label: {
-//                                EmptyView()
-//                            }
-//                        }
-                        
                     }
                     
                 }
                 .position(x:200, y: 280)
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                 .onChange(of: index) { newValue in
-                    if index == diaryText.count - 1 {
+                    if index == diaryData.diaryText.count - 1 {
                         isShowing.toggle()
                     }
                 }
                 
-                
-                
-                
             }
             
-            
-            
-            
             HStack(spacing: 15) {
-                //                Text(index.description)
-                ForEach(diaryText.indices, id: \.self) { index in
+                Text(index.description)
+                ForEach(diaryData.diaryText.indices, id: \.self) { index in
                     
-                    if index < diaryText.count  {
+                    if index < diaryData.diaryText.count - 1 {
                         Circle()
                         // TODO: - 현재 index에 강조하는 컬러 적용
                             .fill(Color.black)
