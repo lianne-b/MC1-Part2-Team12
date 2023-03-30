@@ -17,7 +17,6 @@ struct DiaryDetailView: View {
         VStack {
             // MARK: - 화면 상단 바
             HStack {
-                
                 /* 홈 버튼 */
                 NavigationLink(destination: ContentView()
                     .navigationBarBackButtonHidden(true)) {
@@ -33,21 +32,20 @@ struct DiaryDetailView: View {
                     .fontWeight(.semibold)
                 
                 Spacer()
-            }.padding(.horizontal, 20)
+            }
+            .padding(.horizontal, 20)
             
 
             
             // MARK: - 화면 내용
             /* 일기 그림 담는 뷰 */
-            Image("cc")
+            Image(diaryData.diaryImage)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 300, height: 300)
             
             /* 일기 내용 담는 뷰 */
-//            TextView(diaryText: diaryData.diaryText, memberName: diaryData.memberName)
             TextView(diaryData: diaryData)
-            
             
         }
         .onAppear {
