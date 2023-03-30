@@ -13,7 +13,7 @@ struct TextView: View {
 
     let diaryData: DiaryData
     
-    
+    //MARK: AnimatedTextView
     struct AnimatedTextView: View {
         let text: String
         @State private var currentIndex: Int = 0
@@ -43,6 +43,7 @@ struct TextView: View {
             .padding(.horizontal, 20)
         }
     }
+    //문자열에서 캐릭터의 개수를 새면서 계속 반복하며 찍어내는것
     
 
     
@@ -81,7 +82,7 @@ struct TextView: View {
                 
                 
                 TabView(selection: $index) {
- 
+  // ["나는", "춘식이가", "좋아요."]
                     ForEach(0..<diaryData.diaryText.count, id: \.self) { index in
                         VStack {
                             AnimatedTextView(text: diaryData.diaryText[index])
@@ -115,8 +116,11 @@ struct TextView: View {
                 }
                 .position(x:200, y: 280)
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                
                 .onChange(of: index) { newValue in
+//                    sleep(3)
                     if index == diaryData.diaryText.count - 1 {
+                        
                         isShowing.toggle()
                     }
                 }
@@ -124,13 +128,14 @@ struct TextView: View {
             }
             
             HStack(spacing: 15) {
-                Text(index.description)
-                ForEach(diaryData.diaryText.indices, id: \.self) { index in
+//                Text(index.description)
+                ForEach(diaryData.diaryText.indices, id: \.self) { i in
                     
-                    if index < diaryData.diaryText.count - 1 {
+                    if i < diaryData.diaryText.count {
                         Circle()
                         // TODO: - 현재 index에 강조하는 컬러 적용
-                            .fill(Color.black)
+                            .fill(i == index ? Color.yellow : Color.gray)
+//                            .fill(Color.black)
                             .frame(width: 7)
                         }
                         
