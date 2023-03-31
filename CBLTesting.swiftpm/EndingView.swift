@@ -8,8 +8,25 @@
 import SwiftUI
 
 struct EndingView: View {
+    
+    @State var ImageOpacity: Double = 0.0
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            
+            NavigationLink {
+                WrapUpView()
+            } label: {
+                Image("EndingViewImage")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .ignoresSafeArea()
+                    .navigationBarBackButtonHidden()
+            }
+
+        }
+        
+        
     }
 }
 
