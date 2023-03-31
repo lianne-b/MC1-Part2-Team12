@@ -1,3 +1,33 @@
+//import SwiftUI
+//
+//struct TypingText: View {
+//    let text: String
+//    @State private var visibleText: String = ""
+//
+//    var body: some View {
+//        Text(visibleText)
+//            .font(.title)
+//            .onAppear {
+//                DispatchQueue.global(qos: .userInitiated).async {
+//                    for character in text {
+//                        Thread.sleep(forTimeInterval: 0.2) // adjust speed of typing here
+//                        DispatchQueue.main.async {
+//                            visibleText.append(character)
+//                        }
+//                    }
+//                }
+//            }
+//    }
+//}
+//
+//struct FirstView: View {
+//    var body: some View {
+//        VStack {
+//            TypingText(text: "Hello, World!")
+//        }
+//    }
+//}
+//
 //
 //  FirstView.swift
 //  CBLTesting
