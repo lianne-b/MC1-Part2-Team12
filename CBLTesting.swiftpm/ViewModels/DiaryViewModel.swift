@@ -30,7 +30,7 @@ final class DiaryViewModel {
             ],
             mimoji: "biny",
             mimojiText: "🐹 두근두근 첫 인상",
-            bgm: "숨바꼭질"
+            bgm: "cake"
         ),
         
         DiaryData(
@@ -47,7 +47,7 @@ final class DiaryViewModel {
             ],
             mimoji: "touphie",
             mimojiText: "😐 포커페이스",
-            bgm: "왈츠"
+            bgm: "Fat Cat"
             
         ),
         
@@ -65,7 +65,7 @@ final class DiaryViewModel {
             ],
             mimoji: "lianne",
             mimojiText: "🍬 당 떨어지는 날",
-            bgm: "실수"
+            bgm: "숨바꼭질"
             
         ),
         
@@ -83,7 +83,7 @@ final class DiaryViewModel {
             ],
             mimoji: "miya",
             mimojiText: "🌀 도라버리겠다",
-            bgm: "숨바꼭질"
+            bgm: "cute cat"
         ),
         
         DiaryData(
@@ -100,7 +100,7 @@ final class DiaryViewModel {
             ],
             mimoji: "anna",
             mimojiText: "🍠 은밀한 그의 이중생활",
-            bgm: "실수"
+            bgm: "왈츠"
         ),
         
         DiaryData(
@@ -116,7 +116,7 @@ final class DiaryViewModel {
             ],
             mimoji: "bruni",
             mimojiText: "🌻 발표가 좋아",
-            bgm: "왈츠"
+            bgm: "jump"
         )
         
     ]
