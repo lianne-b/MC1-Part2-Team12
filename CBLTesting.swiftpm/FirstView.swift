@@ -48,6 +48,18 @@ struct FirstView: View {
                 VStack(alignment: .center, spacing: 36 ) {
                     Image("TitleA")
                     Image("TitleB")
+                    Button(action: {
+                        print("Button is Clicked")
+                        isNextViewPresented = true
+                    },
+                           label : {
+                        Text("시작하기")
+                            .padding(20)
+                            .foregroundColor(.black)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(Color.black , lineWidth: 5))
+                    }).padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 0))
                 }
                 .background(
                     Image("background")
@@ -61,8 +73,7 @@ struct FirstView: View {
                         self.audioPlayer?.stop()
                     }
             }
-        }
-        .onAppear {
+        }.onAppear {
             guard let soundPath = Bundle.main.path(forResource: "firstMusic", ofType: "mp3") else { return }
             let url = URL(fileURLWithPath: soundPath)
             
@@ -75,11 +86,6 @@ struct FirstView: View {
                 print("Music started playing.")
             } catch {
                 print("Error playing music: : \(error.localizedDescription)")
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                withAnimation {
-                    isNextViewPresented = true
-                }
             }
         }
     }
