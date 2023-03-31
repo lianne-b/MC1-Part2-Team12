@@ -19,4 +19,5 @@ struct DiaryData {
     var diaryText: [String] // 다이어리 텍스트
     var mimoji : String // 미모지 그림
     var mimojiText : String // 미모지 텍스트
+    var bgm: String
 }
