@@ -20,7 +20,7 @@ final class DiaryViewModel {
         DiaryData(
             id: 0,
             diaryName: "팀원들과의 첫만남",
-            memberName: "biny",
+            memberName: "Biny",
             diaryImage: "binyImage",
             diaryFont: "NanumDdoBagDdoBag",
             diaryStamp: "binyStamp",
@@ -29,13 +29,13 @@ final class DiaryViewModel {
                 ""
             ],
             mimoji: "biny",
-            mimojiText: "HI!"
+            mimojiText: "🐹 두근두근 첫 인상"
         ),
         
         DiaryData(
             id: 1,
             diaryName: "인상 펴서 인생 피자",
-            memberName: "toughie",
+            memberName: "Toughie",
             diaryImage: "toughieImage",
             diaryFont: "NanumDongHwaDdoBag",
             diaryStamp: "toughieStamp",
@@ -45,13 +45,13 @@ final class DiaryViewModel {
                 ""
             ],
             mimoji: "touphie",
-            mimojiText: "HI!"
+            mimojiText: "😐 포커페이스"
         ),
         
         DiaryData(
             id: 2,
             diaryName: "당 떨어지는 날",
-            memberName: "lianne",
+            memberName: "Lianne",
             diaryImage: "lianneImage",
             diaryFont: "NanumDungGeunInYeon",
             diaryStamp: "lianneStamp",
@@ -61,13 +61,13 @@ final class DiaryViewModel {
                 ""
             ],
             mimoji: "lianne",
-            mimojiText: "HI!"
+            mimojiText: "🍬 당 떨어지는 날"
         ),
         
         DiaryData(
             id: 3,
-            diaryName: "복잡한 날",
-            memberName: "miya",
+            diaryName: "도라버리겠다",
+            memberName: "Miya",
             diaryImage: "miyaImage",
             diaryFont: "NanumGgocNaeEum",
             diaryStamp: "miyaStamp",
@@ -77,13 +77,13 @@ final class DiaryViewModel {
                 ""
             ],
             mimoji: "miya",
-            mimojiText: "HI!"
+            mimojiText: "🌀 도라버리겠다"
         ),
         
         DiaryData(
             id: 4,
-            diaryName: "터피의 재발견",
-            memberName: "anna",
+            diaryName: "은밀한 그의 이중생활",
+            memberName: "Anna",
             diaryImage: "annaImage",
             diaryFont: "NanumGyuRiEuiIrGi",
             diaryStamp: "annaStamp",
@@ -93,13 +93,13 @@ final class DiaryViewModel {
                 ""
             ],
             mimoji: "anna",
-            mimojiText: "HI!"
+            mimojiText: "🍠 은밀한 그의 이중생활"
         ),
         
         DiaryData(
             id: 5,
             diaryName: "발표가 좋아",
-            memberName: "bruni",
+            memberName: "Bruni",
             diaryImage: "bruniImage",
             diaryFont: "NanumMiNiSonGeurSsi",
             diaryStamp: "bruniStamp",
@@ -108,7 +108,7 @@ final class DiaryViewModel {
                 ""
             ],
             mimoji: "bruni",
-            mimojiText: "HI!"
+            mimojiText: "🌻 발표가 좋아"
         )
         
     ]
