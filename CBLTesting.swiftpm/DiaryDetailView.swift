@@ -66,6 +66,7 @@ struct DiaryDetailView: View {
                     }
                 }
             }
+            .padding(.bottom, -10)
             
             /* 일기 내용 담는 뷰 */
             TextView(diaryData: diaryData)
