@@ -14,7 +14,7 @@ struct FirstView: View {
     
     var body: some View {
         ZStack {
-            NavigationView{
+            NavigationView {
                 VStack(alignment: .center, spacing: 36 ) {
                     Image("TitleA")
                     Image("TitleB")
@@ -23,12 +23,7 @@ struct FirstView: View {
                         isNextViewPresented = true
                     },
                            label : {
-                        Text("시작하기")
-                            .padding(20)
-                            .foregroundColor(.black)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(Color.black , lineWidth: 5))
+                        Image("startButton")
                     }).padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 0))
                 }
                 .background(
